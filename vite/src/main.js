@@ -1,8 +1,12 @@
-import { AttributionControl, Map, attributionControl } from 'maplibre-gl';
+import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer, addPulauLayer} from '../layers/vector'
 import { addGambar } from '../layers/raster';
-import { addAttribution } from '../control/newControl';
+import { addAttribution } from '../control/newControl'
+import { addKotaPopup } from '../popups/customPopups';
+import { AttributionControl } from 'maplibre-gl';
+
+
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -17,10 +21,10 @@ const map = new Map({
   attributionControl: false
 })
 
-// map.addControl(new AttributionControl({
-//   compact:true,
-//   customAttribution:"Natural Earth, Fate"
-// }))
+map.addControl(new AttributionControl({
+  compact:true,
+  customAttribution:"Natural Earth, Fate"
+}))
 
 map.on("load", () => {
   addKotaLayer(map)
@@ -29,4 +33,9 @@ map.on("load", () => {
 
 })
 
-addAttribution(map, "Natural Earth")
+map.on("click", "titik-kota", (event) => {
+  addKotaPopup(map, event);
+})
+
+map.addControl(new GlobeControl())
+map.addControl(new FullscreenControl())
