@@ -2,7 +2,6 @@ import { AttributionControl, Map, attributionControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer, addPulauLayer} from '../layers/vector'
 import { addGambar } from '../layers/raster';
-import { addAttribution } from '../control/newControl';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -12,21 +11,14 @@ document.body.appendChild(mapElement);
 const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
-  center: [106.83, -6.19],
+  center: [0, 0],
   zoom: 1,
   attributionControl: false
-})
-
-// map.addControl(new AttributionControl({
-//   compact:true,
-//   customAttribution:"Natural Earth, Fate"
-// }))
+});
 
 map.on("load", () => {
-  addKotaLayer(map)
-  addPulauLayer(map)
-  addGambar(map)
+  addKotaLayer(map);
+  addPulauLayer(map);
+});
 
-})
-
-addAttribution(map, "Natural Earth")
+addAttribution(map, "Natural Earth");
