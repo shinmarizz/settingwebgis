@@ -36,3 +36,10 @@ coverage/
 *.suo
 *.ntvs*
 *.njsproj
+
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+ENV/
