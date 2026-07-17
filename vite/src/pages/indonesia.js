@@ -13,7 +13,8 @@ const map = new Map({
   style: 'https://demotiles.maplibre.org/globe.json',
   center: [0, 0],
   zoom: 1,
-  attributionControl: false
+  attributionControl: false,
+  
 });
 
 map.on("load", () => {

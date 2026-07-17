@@ -1,10 +1,11 @@
-import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
+import { Map, FullscreenControl, GlobeControl, L } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import {addKotaLayer, addPulauLayer} from '../layers/vector'
 import { addGambar } from '../layers/raster';
 import { addAttribution } from '../control/newControl'
 import { addKotaPopup } from '../popups/customPopups';
 import { AttributionControl } from 'maplibre-gl';
+import { LogoFate } from '../control/customlogoControl';
 
 
 
@@ -30,6 +31,7 @@ map.on("load", () => {
   addKotaLayer(map)
   addPulauLayer(map)
   addGambar(map)
+  LogoFate(map)
 
 })
 
@@ -39,3 +41,5 @@ map.on("click", "titik-kota", (event) => {
 
 map.addControl(new GlobeControl())
 map.addControl(new FullscreenControl())
+map.addControl(new LogoControl({compact: false}))
+map.addControl(new LogoFate(), "top-left")

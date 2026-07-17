@@ -1,4 +1,4 @@
-import logoHonda from "../data/jean.jpeg"
+import logoJean from "../data/jean.jpeg";
 
 export class LogoFate {
     onAdd(map) {
@@ -7,8 +7,8 @@ export class LogoFate {
         this._container.className = 'maplibregl-ctrl';
         this._container.innerHTML = `
             <img
-                src="${logoHonda}"
-                alt="Logo Honda"
+                src="${logoJean}"
+                alt="Logo Jean"
                 style="width: 50px"
             >
         `
